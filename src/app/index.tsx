@@ -1,5 +1,5 @@
-import './index.css';
 import { Router, RouteList } from './routing';
+import './index.css';
 
 const App = () => {
   return (

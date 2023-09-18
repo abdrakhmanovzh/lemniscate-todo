@@ -1,3 +1,4 @@
+import { Loading } from '@/shared/ui';
 import { Suspense } from 'react';
 import { BrowserRouter } from 'react-router-dom';
 
@@ -8,7 +9,7 @@ interface Props {
 export const Router = ({ children }: Props) => {
   return (
     <BrowserRouter>
-      <Suspense fallback="loading...">{children}</Suspense>
+      <Suspense fallback={<Loading />}>{children}</Suspense>
     </BrowserRouter>
   );
 };
