@@ -1,2 +1,3 @@
 export { TaskCard } from './ui';
-export type { Task } from './models';
+export type { TaskModel } from './models';
+export { useFetchTasks, useFetchTaskById } from './api';

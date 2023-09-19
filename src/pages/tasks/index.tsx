@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
-import { CreateTaskCard } from '@/features/createTask/ui';
+import { TasksList } from '@/widgets/tasks-list/ui';
+import { CreateTaskCard } from '@/features/create-task/ui';
 
 const TasksPage = () => {
   return (
@@ -15,6 +16,7 @@ const TasksPage = () => {
       <CreateTaskCard />
 
       {/* tasks list */}
+      <TasksList />
     </motion.div>
   );
 };

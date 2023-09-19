@@ -1,14 +1,15 @@
 import { useState } from 'react';
-import { createTask } from '@/features/createTask/api';
+import { useCreateTask } from '../../api/useCreateTask';
 import { Box, Message } from '@/shared/ui';
 
 export const CreateTaskCard = () => {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
 
+  const { mutate: createTask, isLoading: createTaskLoading } = useCreateTask();
+
   const [status, setStatus] = useState<'error' | 'success' | null>(null);
   const [message, setMessage] = useState('');
-  const [loading, setLoading] = useState(false);
 
   const handleTitleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setTitle(e.target.value);
@@ -22,27 +23,28 @@ export const CreateTaskCard = () => {
 
   const handleClick = async () => {
     try {
-      setLoading(true);
-      const res = await createTask({
-        title,
-        description
-      });
-
-      if (res.status === 201) {
-        setStatus('success');
-        setMessage('task created successfully');
-      } else {
-        setStatus('error');
-        setMessage('something went wrong');
-      }
+      createTask(
+        {
+          title,
+          description
+        },
+        {
+          onSuccess: () => {
+            setStatus('success');
+            setMessage('task created successfully');
+          },
+          onError: () => {
+            setStatus('error');
+            setMessage('something went wrong');
+          }
+        }
+      );
 
       setTimeout(() => {
         setStatus(null);
       }, 3000);
     } catch (error) {
       console.log(error);
-    } finally {
-      setLoading(false);
     }
   };
 
@@ -58,7 +60,7 @@ export const CreateTaskCard = () => {
         <hr className="bg-neutral-700" />
         <textarea
           placeholder="description"
-          className="h-24 text-lg outline-none lg:text-base"
+          className="h-24 resize-none text-lg outline-none lg:text-base"
           onChange={handleDescriptionChange}
         ></textarea>
       </Box>
@@ -67,7 +69,7 @@ export const CreateTaskCard = () => {
           onClick={handleClick}
           className="h-full w-full text-center text-lg lg:text-base"
         >
-          {loading ? <p>loading...</p> : 'create task'}
+          {createTaskLoading ? <p>loading...</p> : 'create task'}
         </button>
       </Box>
       {status && <Message type={status} message={message} />}

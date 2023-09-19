@@ -7,7 +7,7 @@ interface Props {
 
 export const Box = ({ children, className }: Props) => {
   return (
-    <div className={cn('rounded-md border border-neutral-500 p-2', className)}>
+    <div className={cn('rounded-md border border-neutral-400 p-2', className)}>
       {children}
     </div>
   );
