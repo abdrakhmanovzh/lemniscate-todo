@@ -3,7 +3,7 @@ import { useQuery } from '@tanstack/react-query';
 import { TaskModel } from '..';
 
 export const useFetchTaskById = (id: string) => {
-  return useQuery(['tasks', id], async () => {
+  return useQuery(['task', id], async () => {
     const { data, error } = await supabase
       .from('tasks')
       .select('*')
