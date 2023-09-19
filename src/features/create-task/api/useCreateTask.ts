@@ -1,5 +1,5 @@
-import { supabase } from '@/shared/api';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { supabase } from '@/shared/api';
 
 interface Props {
   title: string;

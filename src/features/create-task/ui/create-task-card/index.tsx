@@ -67,7 +67,8 @@ export const CreateTaskCard = () => {
       <Box className="p-1">
         <button
           onClick={handleClick}
-          className="h-full w-full text-center text-lg lg:text-base"
+          disabled={createTaskLoading || !title}
+          className="h-full w-full cursor-pointer text-center text-lg disabled:cursor-default disabled:opacity-50 lg:text-base"
         >
           {createTaskLoading ? <p>loading...</p> : 'create task'}
         </button>
