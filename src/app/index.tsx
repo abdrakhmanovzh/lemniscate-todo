@@ -6,7 +6,13 @@ import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import './index.css';
 import TaskPage from '@/pages/task';
 
-const queryClient = new QueryClient();
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      retry: 3
+    }
+  }
+});
 
 const App = () => {
   return (

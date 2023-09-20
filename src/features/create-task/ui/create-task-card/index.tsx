@@ -56,12 +56,14 @@ export const CreateTaskCard = () => {
           className="w-full bg-transparent text-lg outline-none lg:text-base"
           placeholder="title"
           onChange={handleTitleChange}
+          data-cy="create-task-title"
         />
         <hr className="bg-neutral-700" />
         <textarea
           placeholder="description"
           className="h-24 resize-none text-lg outline-none lg:text-base"
           onChange={handleDescriptionChange}
+          data-cy="create-task-description"
         ></textarea>
       </Box>
       <Box className="p-1">
@@ -69,6 +71,7 @@ export const CreateTaskCard = () => {
           onClick={handleClick}
           disabled={createTaskLoading || !title}
           className="h-full w-full cursor-pointer text-center text-lg disabled:cursor-default disabled:opacity-50 lg:text-base"
+          data-cy="create-task-button"
         >
           {createTaskLoading ? <p>loading...</p> : 'create task'}
         </button>

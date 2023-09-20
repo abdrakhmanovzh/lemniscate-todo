@@ -25,7 +25,10 @@ export const TaskCard = ({
       onMouseEnter={() => setShowMenuButtons(true)}
       onMouseLeave={() => setShowMenuButtons(false)}
     >
-      <div className="flex w-full items-center justify-between gap-4">
+      <div
+        className="flex w-full items-center justify-between gap-4"
+        data-cy="task"
+      >
         <Header title={task.title} />
         <Checkbox isChecked={task.completed} onChange={onCheckboxClick} />
       </div>
@@ -34,8 +37,12 @@ export const TaskCard = ({
 
       {showMenuButtons && (
         <button
-          onClick={onDeleteClick}
-          className="absolute right-[-10px] top-[-12px] cursor-pointer rounded-full border border-neutral-400 bg-white p-1"
+          onClick={(e) => {
+            e.stopPropagation();
+            onDeleteClick();
+          }}
+          className="absolute right-[-10px] top-[-12px] z-10 cursor-pointer rounded-full border border-neutral-400 bg-white p-1"
+          data-cy="task-delete-button"
         >
           <img src={DeleteIcon} alt="menu" height={14} width={14} />
         </button>

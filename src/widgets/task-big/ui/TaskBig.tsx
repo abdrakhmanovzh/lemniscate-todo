@@ -50,7 +50,9 @@ export const TaskBig = ({ id }: { id: string }) => {
           }}
         >
           <Checkbox isChecked={task.completed} onChange={() => {}} />
-          <p className="text-lg lg:text-base">done</p>
+          <p className="text-lg lg:text-base" data-cy="task-checkbox-p">
+            done
+          </p>
         </Box>
         <Box
           className="flex flex-1 cursor-pointer items-center gap-2 lg:hover:bg-gray-100"

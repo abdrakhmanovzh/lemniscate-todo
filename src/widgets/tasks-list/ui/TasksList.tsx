@@ -42,7 +42,8 @@ export const TasksList = () => {
           onTaskClick={() => {
             navigate(`/tasks/${task.id}`);
           }}
-          onCheckboxClick={() => {
+          onCheckboxClick={(e) => {
+            e.stopPropagation();
             handleCheckboxClick(task.id, task.completed);
           }}
           onDeleteClick={() => {

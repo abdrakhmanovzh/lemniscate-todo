@@ -8,12 +8,13 @@ interface Props {
 
 export const Checkbox = ({ isChecked, onChange }: Props) => {
   return (
-    <label>
+    <label data-cy="task-checkbox-label">
       <input
         type="checkbox"
         checked={isChecked}
         onChange={onChange}
         className="hidden"
+        data-cy="task-checkbox"
       />
       <div className="flex h-4 w-4 cursor-pointer items-center justify-center rounded-[4px] border border-gray-500 p-[1.5px]">
         <motion.div
